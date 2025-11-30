@@ -55,6 +55,28 @@ dogs = {
     }
 }
 
+# New dog added: Jack the Havanese
+dogs['jack'] = {
+    'name': 'Jack',
+    'breed': 'Havanese',
+    'age': '1 years old',
+    'description': 'Jack is a playful Havanese who loves cuddles and squeaky toys.',
+    'fun_fact': 'Jack loves his mom Grandme and his dad Grandpe!',
+    # using placeholder image; replace with 'static/Jack.jpeg' if you add a photo
+    'image_path': 'static/Jack.jpeg'
+}
+
+# New dog added: Ruthie
+dogs['ruthie'] = {
+    'name': 'Ruthie',
+    'breed': 'A Mix',
+    'age': '13 years old',
+    'description': 'Ruthie loves to chill and relax all day long.',
+    'fun_fact': 'Ruthie loves to nap!',
+    # using placeholder image; replace with 'static/Ruthie.jpeg' if you add a photo
+    'image_path': 'static/Ruthie.jpeg'
+}
+
 @app.route('/')
 def home():
     return render_template('index.html', dogs=dogs)

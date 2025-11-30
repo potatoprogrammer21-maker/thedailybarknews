@@ -1,8 +1,8 @@
-name: Build Flask Site
+name: Build and Deploy Flask Site
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -15,21 +15,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repo
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install Dependencies
-        run: pip install flask
+      - name: Install Flask
+        run: pip install Flask
 
-      - name: Run Static Export
+      - name: Export site
         run: python export.py
 
-      - name: Upload Artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -37,6 +37,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+
     steps:
       - name: Deploy
         uses: actions/deploy-pages@v4
